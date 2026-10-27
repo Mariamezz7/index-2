@@ -1,0 +1,969 @@
+[Uploading Territory_MindMap_Dashboard.html…]()
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mahmoud Makari Territory — Partner-Driven DG Dashboard | KSA 2026</title>
+<style>
+:root{
+  --sap-blue:#0070F2;--sap-dark:#1A2638;--sap-mid:#2C4D6E;--sap-light:#E8F1FB;
+  --accent:#00B8D9;--green:#1BAC67;--amber:#F5A623;--red:#E3342F;
+  --purple:#7B4FBF;--orange:#E87A22;--teal:#007BA5;
+  --text:#1A2638;--muted:#6B7C93;--border:#D9E4F0;--white:#fff;--bg:#EEF3FA;--card:#F7FAFD;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'72','Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+/* ══ HEADER ══ */
+.hdr{background:linear-gradient(135deg,#0d1e30 0%,#0a5fc7 60%,#0070F2 100%);color:#fff;padding:42px 56px 36px;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;right:-60px;top:-60px;width:360px;height:360px;border-radius:50%;background:rgba(255,255,255,.04);}
+.hdr::after{content:'';position:absolute;right:140px;bottom:-120px;width:240px;height:240px;border-radius:50%;background:rgba(0,184,217,.08);}
+.hdr-inner{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;}
+.hdr-eye{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:8px;}
+.hdr h1{font-size:27px;font-weight:800;margin-bottom:5px;line-height:1.2;}
+.hdr .sub{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6;}
+.hdr-meta{margin-top:18px;display:flex;gap:28px;flex-wrap:wrap;font-size:11.5px;color:rgba(255,255,255,.5);}
+.hdr-meta b{color:rgba(255,255,255,.92);}
+.hdr-badges{display:flex;flex-direction:column;gap:10px;align-items:flex-end;}
+.hdr-badge{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:10px 20px;text-align:center;min-width:120px;}
+.hdr-badge .bv{font-size:28px;font-weight:800;color:#fff;line-height:1;}
+.hdr-badge .bl{font-size:11px;color:rgba(255,255,255,.7);margin-top:2px;}
+
+/* ══ NAV ══ */
+.nav{background:var(--sap-dark);display:flex;overflow-x:auto;padding:0 56px;border-bottom:1px solid rgba(255,255,255,.07);}
+.nav a{display:inline-block;padding:13px 20px;font-size:12px;font-weight:600;color:rgba(255,255,255,.45);text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap;transition:.15s;}
+.nav a:hover{color:rgba(255,255,255,.8);}
+.nav a.on{color:#fff;border-bottom-color:var(--accent);}
+
+/* ══ LAYOUT ══ */
+.wrap{padding:36px 56px 64px;max-width:1300px;margin:0 auto;}
+.sec-hd{font-size:10.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin:48px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:8px;}
+.ico{width:22px;height:22px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;}
+.g-6-4{display:grid;grid-template-columns:3fr 2fr;gap:18px;}
+.g-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;}
+@media(max-width:900px){.g2,.g3,.g4,.g5,.g-6-4{grid-template-columns:1fr;}}
+
+/* ══ CARDS ══ */
+.card{background:var(--white);border-radius:14px;border:1px solid var(--border);box-shadow:0 1px 6px rgba(0,0,0,.05);overflow:hidden;}
+.card-hd{padding:15px 20px 12px;border-bottom:1px solid var(--border);font-size:13px;font-weight:700;color:var(--text);display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.card-bd{padding:18px 20px;}
+
+/* ══ KPI TILES ══ */
+.kpi{background:var(--white);border-radius:14px;border:1px solid var(--border);box-shadow:0 1px 5px rgba(0,0,0,.05);padding:20px 18px 16px;position:relative;overflow:hidden;}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:14px 14px 0 0;}
+.k-blue::before{background:var(--sap-blue);} .k-acc::before{background:var(--accent);} .k-grn::before{background:var(--green);}
+.k-amb::before{background:var(--amber);} .k-pur::before{background:var(--purple);} .k-ora::before{background:var(--orange);}
+.k-teal::before{background:var(--teal);} .k-red::before{background:var(--red);}
+.kpi-lbl{font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;}
+.kpi-val{font-size:38px;font-weight:800;color:var(--text);line-height:1;margin-bottom:4px;}
+.kpi-sub{font-size:11px;color:var(--muted);line-height:1.4;}
+.kpi-tag{display:inline-block;margin-top:8px;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;background:var(--sap-light);color:var(--sap-blue);}
+
+/* ══ FUNNEL ══ */
+.funnel{display:flex;background:var(--white);border-radius:14px;border:1px solid var(--border);box-shadow:0 1px 5px rgba(0,0,0,.05);overflow:hidden;}
+.fn{flex:1;padding:22px 12px;text-align:center;position:relative;}
+.fn::after{content:'▶';position:absolute;right:-9px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--border);z-index:1;}
+.fn:last-child::after{display:none;}
+.fn1{background:#E8F1FB;} .fn2{background:#E6F4F9;} .fn3{background:#FFF8E6;} .fn4{background:#FFF0E6;} .fn5{background:#E8F5EE;}
+.fn-n{font-size:30px;font-weight:800;line-height:1;margin-bottom:4px;}
+.fn1 .fn-n{color:#0070F2;} .fn2 .fn-n{color:#007BA5;} .fn3 .fn-n{color:#C87800;} .fn4 .fn-n{color:#E87A22;} .fn5 .fn-n{color:#1BAC67;}
+.fn-l{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
+.fn-p{font-size:10.5px;color:var(--muted);margin-top:5px;}
+
+/* ══ BADGES ══ */
+.badge{display:inline-block;border-radius:20px;font-size:10px;font-weight:700;padding:3px 8px;}
+.bblue{background:#E8F1FB;color:#0070F2;} .bgrn{background:#E8F5EE;color:#1BAC67;} .bamb{background:#FFF8E6;color:#C87800;}
+.bora{background:#FFF0E6;color:#E87A22;} .bpur{background:#F3ECF9;color:#7B4FBF;} .bteal{background:#E6F4F9;color:#007BA5;}
+.bred{background:#FEF0F0;color:#C0392B;} .bgry{background:#F0F2F5;color:#6B7C93;}
+
+/* ══ INSIGHT BOX ══ */
+.insight{background:linear-gradient(135deg,#E8F1FB,#E6F4F9);border-left:4px solid var(--sap-blue);border-radius:10px;padding:14px 18px;font-size:12px;line-height:1.7;color:var(--text);margin-bottom:18px;}
+.insight strong{color:var(--sap-blue);}
+
+/* ══ TABLES ══ */
+table{width:100%;border-collapse:collapse;font-size:12px;}
+th{background:var(--card);padding:9px 13px;text-align:left;font-weight:700;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border);}
+td{padding:10px 13px;border-bottom:1px solid #EEF3FA;vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:#f8fbff;}
+
+/* ══ PARTNER BARS ══ */
+.pt-row{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);}
+.pt-row:last-child{border-bottom:none;}
+.pt-av{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0;}
+.pt-name{font-size:13px;font-weight:600;color:var(--text);}
+.pt-info{font-size:10.5px;color:var(--muted);}
+.pt-bar{flex:1;}
+.pt-bt{height:7px;background:#EEF3FA;border-radius:4px;overflow:hidden;margin-top:5px;}
+.pt-bf{height:100%;border-radius:4px;}
+.pt-n{font-size:18px;font-weight:800;color:var(--sap-blue);width:42px;text-align:right;flex-shrink:0;}
+
+/* ══ INDUSTRY CARDS ══ */
+.ind{background:var(--white);border-radius:12px;border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.04);overflow:hidden;}
+.ind-hd{padding:14px 16px 10px;display:flex;align-items:center;gap:12px;}
+.ind-ic{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.ind-t{font-size:12.5px;font-weight:700;color:var(--text);}
+.ind-pe{font-size:10.5px;color:var(--muted);}
+.ind-bd{padding:0 16px 14px;}
+.ind-pain{font-size:11px;color:var(--muted);line-height:1.5;padding:8px 10px;background:#FFF8E6;border-radius:7px;border-left:3px solid var(--amber);margin-bottom:8px;}
+.ind-proof{font-size:11px;color:var(--teal);font-weight:600;margin-bottom:6px;}
+.ind-ref{font-size:11px;color:var(--green);font-weight:600;margin-bottom:8px;}
+
+/* ══ TOOLS ══ */
+.tool{background:var(--card);border-radius:12px;border:1px solid var(--border);padding:16px;}
+.tool-ico{font-size:22px;margin-bottom:8px;}
+.tool-nm{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.tool-ds{font-size:11px;color:var(--muted);line-height:1.5;}
+
+/* ══ STEP LIST ══ */
+.step{display:flex;gap:12px;align-items:flex-start;padding:9px 12px;background:var(--card);border-radius:9px;border:1px solid var(--border);margin-bottom:9px;}
+.step-n{width:25px;height:25px;border-radius:50%;background:var(--sap-blue);color:#fff;font-size:11.5px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.step h4{font-size:12px;font-weight:700;color:var(--text);margin-bottom:2px;}
+.step p{font-size:11px;color:var(--muted);line-height:1.5;}
+
+/* ══ WHITE SPACE SOURCE CARDS ══ */
+.ws{background:var(--card);border-radius:12px;border:1px solid var(--border);padding:16px;}
+.ws-ic{font-size:22px;margin-bottom:8px;}
+.ws-t{font-size:12px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.ws ul{list-style:none;font-size:11px;color:var(--muted);line-height:1.8;}
+.ws li{padding-left:14px;position:relative;}
+.ws li::before{content:'→';position:absolute;left:0;color:var(--sap-blue);font-size:10px;}
+
+/* ══ BLITZ AGENDA ══ */
+.ag-day{background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);}
+.ag-dh{font-size:11.5px;font-weight:700;color:var(--sap-blue);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.ag-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:9px;}
+.ag-t{font-size:11px;font-weight:700;color:var(--sap-blue);width:100px;flex-shrink:0;}
+.ag-a{font-size:12px;color:var(--text);line-height:1.4;}
+.ag-a small{display:block;font-size:10.5px;color:var(--muted);margin-top:2px;}
+
+/* ══ RESOURCE LIST ══ */
+.res{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--border);}
+.res:last-child{border-bottom:none;}
+.res-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px;}
+.res-nm{font-size:12px;font-weight:600;color:var(--text);}
+.res-ds{font-size:11px;color:var(--muted);}
+
+/* ══ TRACK CARDS ══ */
+.track{background:var(--card);border-radius:11px;border:1px solid var(--border);padding:15px;}
+.track-n{font-size:26px;font-weight:800;color:var(--sap-blue);line-height:1;margin-bottom:5px;}
+.track-t{font-size:12px;font-weight:700;color:var(--text);margin-bottom:3px;}
+.track-d{font-size:11px;color:var(--muted);line-height:1.5;}
+
+/* ══ PARTNER PROCESS ══ */
+/* Pipeline row */
+.pp-flow{display:flex;align-items:stretch;gap:0;margin-bottom:28px;overflow:hidden;border-radius:14px;border:1px solid var(--border);box-shadow:0 1px 6px rgba(0,0,0,.05);}
+.pp-step{flex:1;padding:18px 12px 16px;text-align:center;position:relative;cursor:default;}
+.pp-step::after{content:'▶';position:absolute;right:-9px;top:50%;transform:translateY(-50%);font-size:13px;color:rgba(255,255,255,.35);z-index:2;}
+.pp-step:last-child::after{display:none;}
+.pp-s1{background:#0070F2;} .pp-s2{background:#0058c7;} .pp-s3{background:#007BA5;}
+.pp-s4{background:#C87800;} .pp-s5{background:#E87A22;} .pp-s6{background:#1BAC67;}
+.pp-num{font-size:11px;font-weight:700;color:rgba(255,255,255,.55);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;}
+.pp-icon{font-size:20px;margin-bottom:6px;}
+.pp-title{font-size:11.5px;font-weight:800;color:#fff;line-height:1.3;margin-bottom:4px;}
+.pp-sub{font-size:10px;color:rgba(255,255,255,.65);line-height:1.4;}
+/* Detail cards row */
+.pp-cards{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-bottom:28px;}
+@media(max-width:1100px){.pp-cards{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:700px){.pp-cards{grid-template-columns:1fr 1fr;}}
+.pp-card{background:var(--white);border-radius:12px;border:1px solid var(--border);overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+.pp-card-hd{padding:10px 13px 8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
+.pp-card-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.pp-card-t{font-size:11.5px;font-weight:700;color:var(--text);}
+.pp-card-bd{padding:10px 13px 12px;}
+.pp-card-bd ul{list-style:none;font-size:11px;color:var(--muted);line-height:1.85;}
+.pp-card-bd li{padding-left:14px;position:relative;}
+.pp-card-bd li::before{content:'›';position:absolute;left:0;color:var(--sap-blue);font-weight:700;}
+.pp-tool{display:inline-block;font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:10px;background:var(--sap-light);color:var(--sap-blue);margin-top:5px;margin-right:3px;}
+/* Qualification checklist */
+.qbox{background:var(--white);border-radius:14px;border:1px solid var(--border);box-shadow:0 1px 6px rgba(0,0,0,.05);overflow:hidden;}
+.qbox-hd{background:linear-gradient(135deg,#0d1e30,#0070F2);padding:16px 22px;display:flex;align-items:center;justify-content:space-between;}
+.qbox-hd h3{font-size:15px;font-weight:800;color:#fff;}
+.qbox-hd span{font-size:11px;color:rgba(255,255,255,.65);background:rgba(255,255,255,.12);border-radius:20px;padding:3px 12px;}
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+@media(max-width:720px){.qgrid{grid-template-columns:1fr;}}
+.qitem{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);}
+.qitem:nth-child(2n){border-right:none;}
+.qitem:nth-last-child(-n+2){border-bottom:none;}
+.qchk{width:22px;height:22px;border-radius:6px;border:2px solid var(--border);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:12px;}
+.qchk.done{background:var(--green);border-color:var(--green);color:#fff;}
+.qchk.mand{background:var(--sap-blue);border-color:var(--sap-blue);color:#fff;}
+.qi-num{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;}
+.qi-t{font-size:12.5px;font-weight:700;color:var(--text);margin-bottom:3px;}
+.qi-d{font-size:11px;color:var(--muted);line-height:1.5;}
+.qi-tag{display:inline-block;font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:10px;margin-top:5px;}
+/* Solid account trophy */
+.solid-acct{background:linear-gradient(135deg,#1BAC67,#0070F2);border-radius:14px;padding:24px 28px;display:flex;align-items:center;gap:24px;margin-top:20px;}
+.solid-icon{font-size:48px;flex-shrink:0;}
+.solid-t{font-size:18px;font-weight:800;color:#fff;margin-bottom:6px;}
+.solid-d{font-size:12.5px;color:rgba(255,255,255,.8);line-height:1.6;}
+.solid-checks{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+.solid-chk{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;font-size:11px;font-weight:600;color:#fff;padding:4px 12px;}
+/* ══ FOOTER ══ */
+.ftr{background:var(--sap-dark);color:rgba(255,255,255,.4);text-align:center;padding:20px;font-size:11px;margin-top:60px;}
+.ftr b{color:rgba(255,255,255,.8);}
+</style>
+</head>
+<body>
+
+<!-- ██ HEADER ██ -->
+<div class="hdr">
+  <div class="hdr-inner">
+    <div>
+      <div class="hdr-eye">SAP Saudi Arabia · Partner-Driven Territory · SDE Demand Generation · 2026</div>
+      <h1>Mahmoud Makari Territory<br>Partner-Driven DG Dashboard</h1>
+      <div class="sub">Mill &amp; Manufacturing · Agribusiness · Food Manufacturing · Retail · KSA</div>
+      <div class="hdr-meta">
+        <span>TEM <b>Mahmoud Makari</b> · mahmoud.makari@sap.com</span>
+        <span>SDE <b>Mariam Ezz</b> · mariam.ezz@sap.com</span>
+        <span>Territory <b>KSA Partner-Driven</b></span>
+        <span>Updated <b>October 2026</b></span>
+      </div>
+    </div>
+    <div class="hdr-badges">
+      <div class="hdr-badge"><div class="bv">8</div><div class="bl">Active Partners</div></div>
+      <div class="hdr-badge"><div class="bv">6</div><div class="bl">Agri Sub-Industries</div></div>
+      <div class="hdr-badge"><div class="bv">3</div><div class="bl">Main Verticals</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ██ NAV ██ -->
+<div class="nav">
+  <a href="#overview" class="on">🗺 Territory Overview</a>
+  <a href="#industry">🏭 Industry Focus</a>
+  <a href="#pitches">📣 Pitches &amp; Scripts</a>
+  <a href="#enablement">🤝 Partner Enablement</a>
+  <a href="#tools">🛠 Tools &amp; Campaigns</a>
+  <a href="#whitespace">🔍 White Space</a>
+  <a href="#blitz">⚡ Blitz Day Plan</a>
+  <a href="#process">🔄 Partner Process</a>
+</div>
+
+<div class="wrap">
+
+<!-- ▓▓▓▓▓▓ SECTION 1 — TERRITORY OVERVIEW ▓▓▓▓▓▓ -->
+<div id="overview" class="sec-hd">
+  <div class="ico" style="background:#E8F1FB;color:#0070F2;">🗺</div>
+  Territory Overview — Accounts &amp; Pipeline
+</div>
+
+<!-- Funnel -->
+<div class="funnel" style="margin-bottom:20px;">
+  <div class="fn fn1"><div class="fn-n">300+</div><div class="fn-l">Partner Accounts</div><div class="fn-p">Territory Universe</div></div>
+  <div class="fn fn2"><div class="fn-n">~180</div><div class="fn-l">Profiled &amp; Enriched</div><div class="fn-p">ZoomInfo + ONE360</div></div>
+  <div class="fn fn3"><div class="fn-n">67</div><div class="fn-l">Accounts w/ Leads</div><div class="fn-p">Partner + SDE Sourced</div></div>
+  <div class="fn fn4"><div class="fn-n">21</div><div class="fn-l">Open Opportunities</div><div class="fn-p">Handed to AE/TEM</div></div>
+  <div class="fn fn5"><div class="fn-n">~8</div><div class="fn-l">Probable Deals</div><div class="fn-p">Active Pipeline</div></div>
+</div>
+
+<!-- KPIs + Partner bars -->
+<div class="g-6-4">
+
+  <!-- Partner distribution -->
+  <div class="card">
+    <div class="card-hd">Partner Account Distribution <span class="badge bblue">8 Active Partners</span></div>
+    <div class="card-bd" style="padding-top:12px;">
+      <!-- MILL & MANUFACTURING -->
+      <div class="pt-row">
+        <div class="pt-av" style="background:#1A2638;">MD</div>
+        <div style="flex:1;">
+          <div class="pt-name">MDSAP</div>
+          <div class="pt-info">🏭 Mill &amp; Manufacturing</div>
+          <div class="pt-bt"><div class="pt-bf" style="width:100%;background:#1A2638;"></div></div>
+        </div>
+        <div style="display:flex;gap:5px;align-items:center;">
+          <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:#E8EDF3;color:#1A2638;">Mill</span>
+          <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:#E8EDF3;color:#1A2638;">Manufacturing</span>
+        </div>
+      </div>
+      <!-- RETAIL -->
+      <div class="pt-row">
+        <div class="pt-av" style="background:#0070F2;">RB</div>
+        <div style="flex:1;">
+          <div class="pt-name">Retail Business Line</div>
+          <div class="pt-info">🛍️ Retail vertical</div>
+          <div class="pt-bt"><div class="pt-bf" style="width:90%;background:#0070F2;"></div></div>
+        </div>
+        <div style="display:flex;gap:5px;align-items:center;">
+          <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:#E8F1FB;color:#0070F2;">Retail</span>
+        </div>
+      </div>
+      <div class="pt-row">
+        <div class="pt-av" style="background:#00B8D9;">DB</div>
+        <div style="flex:1;">
+          <div class="pt-name">DBS</div>
+          <div class="pt-info">🛍️ DBS Retail</div>
+          <div class="pt-bt"><div class="pt-bf" style="width:80%;background:#00B8D9;"></div></div>
+        </div>
+        <div style="display:flex;gap:5px;align-items:center;">
+          <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:#E6F4F9;color:#007BA5;">Retail</span>
+        </div>
+      </div>
+      <!-- AGRIBUSINESS -->
+      <div class="pt-row">
+        <div class="pt-av" style="background:#1BAC67;">SD</div>
+        <div style="flex:1;">
+          <div class="pt-name">Seidor</div>
+          <div class="pt-info">🌾 Agribusiness</div>
+          <div class="pt-bt"><div class="pt-bf" style="width:85%;background:#1BAC67;"></div></div>
+        </div>
+        <div style="display:flex;gap:5px;align-items:center;">
+          <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:#E8F5EE;color:#1BAC67;">Agri</span>
+        </div>
+      </div>
+      <div class="pt-row">
+        <div class="pt-av" style="background:#1BAC67;">WS</div>
+        <div style="flex:1;">
+          <div class="pt-name">Wisys</div>
+          <div class="pt-info">🌾 Agribusiness</div>
+          <div class="pt-bt"><div class="pt-bf" style="width:75%;background:#1BAC67;"></div></div>
+        </div>
+        <div style="display:flex;gap:5px;align-items:center;">
+          <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:#E8F5EE;color:#1BAC67;">Agri</span>
+        </div>
+      </div>
+      <div class="pt-row">
+        <div class="pt-av" style="background:#1BAC67;">LB</div>
+        <div style="flex:1;">
+          <div class="pt-name">LABS</div>
+          <div class="pt-info">🌾 Agribusiness</div>
+          <div class="pt-bt"><div class="pt-bf" style="width:65%;background:#1BAC67;"></div></div>
+        </div>
+        <div style="display:flex;gap:5px;align-items:center;">
+          <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:#E8F5EE;color:#1BAC67;">Agri</span>
+        </div>
+      </div>
+      <!-- AGRI + FOOD MANUFACTURING -->
+      <div class="pt-row">
+        <div class="pt-av" style="background:#F5A623;">AR</div>
+        <div style="flex:1;">
+          <div class="pt-name">Arete</div>
+          <div class="pt-info">🌾 Agribusiness &amp; 🏭 Food Manufacturing</div>
+          <div class="pt-bt"><div class="pt-bf" style="width:85%;background:#F5A623;"></div></div>
+        </div>
+        <div style="display:flex;gap:5px;align-items:center;">
+          <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:#E8F5EE;color:#1BAC67;">Agri</span>
+          <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:#FFF0E6;color:#E87A22;">Food Mfg</span>
+        </div>
+      </div>
+      <!-- AGRI + MANUFACTURING -->
+      <div class="pt-row">
+        <div class="pt-av" style="background:#E87A22;">TV</div>
+        <div style="flex:1;">
+          <div class="pt-name">Technoval <span style="font-size:10px;color:var(--muted);font-weight:400;">· Amr. Tolba</span></div>
+          <div class="pt-info">🌾 Agribusiness &amp; 🏭 Manufacturing</div>
+          <div class="pt-bt"><div class="pt-bf" style="width:90%;background:#E87A22;"></div></div>
+        </div>
+        <div style="display:flex;gap:5px;align-items:center;">
+          <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:#E8F5EE;color:#1BAC67;">Agri</span>
+          <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:#FFF0E6;color:#E87A22;">Mfg</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPI grid -->
+  <div class="g2" style="align-content:start;">
+    <div class="kpi k-blue"><div class="kpi-lbl">Total Partners</div><div class="kpi-val">8</div><div class="kpi-sub">Active partner relationships</div></div>
+    <div class="kpi k-acc"><div class="kpi-lbl">Total Accounts</div><div class="kpi-val">300+</div><div class="kpi-sub">Across all partners</div></div>
+    <div class="kpi k-grn"><div class="kpi-lbl">Leads Created</div><div class="kpi-val">67</div><div class="kpi-sub">SDE + Partner sourced</div><span class="kpi-tag">48 unique accounts</span></div>
+    <div class="kpi k-amb"><div class="kpi-lbl">Opportunities</div><div class="kpi-val">21</div><div class="kpi-sub">Handed to AE / TEM</div><span class="kpi-tag">31% lead→opp rate</span></div>
+    <div class="kpi k-ora"><div class="kpi-lbl">Probable Deals</div><div class="kpi-val">~8</div><div class="kpi-sub">Active pipeline value</div></div>
+    <div class="kpi k-pur"><div class="kpi-lbl">Blitz Days Run</div><div class="kpi-val">5+</div><div class="kpi-sub">Across KSA partners</div></div>
+  </div>
+</div>
+
+
+<!-- ▓▓▓▓▓▓ SECTION 2 — INDUSTRY FOCUS ▓▓▓▓▓▓ -->
+<div id="industry" class="sec-hd">
+  <div class="ico" style="background:#FFF8E6;color:#C87800;">🏭</div>
+  Industry Focus — Mill &amp; Manufacturing · Agribusiness · Food Manufacturing · Retail
+</div>
+
+<div class="insight">
+  Four territory verticals: <strong>Mill &amp; Manufacturing</strong> (MDSAP · Technoval), <strong>Agribusiness</strong> (Seidor · Wisys · LABS · Arete · Technoval — 6 sub-industries), <strong>Food Manufacturing</strong> (Arete), <strong>Retail</strong> (Retail Business Line · DBS). Solution: <strong>GROW with SAP</strong> — cloud-native · 6–9 month go-live · SFDA/MEWA/Halal ready · Vision 2030 aligned.
+</div>
+
+<div class="g-auto">
+
+  <div class="ind">
+    <div class="ind-hd"><div class="ind-ic" style="background:#E8F5EE;">🌾</div><div><div class="ind-t">Agricultural Production &amp; Farming</div><div class="ind-pe">CEO · Head of Ops · CFO</div></div></div>
+    <div class="ind-bd">
+      <div style="font-size:10px;font-weight:700;margin-bottom:6px;color:var(--muted);">PARTNERS: Seidor · Wisys · LABS · Arete · Technoval</div>
+      <div class="ind-pain">💬 "Farm ops, finance &amp; MEWA/SFDA compliance all on disconnected spreadsheets."</div>
+      <div class="ind-proof">📊 20% reduction in input waste post go-live</div>
+      <div class="ind-ref">🏆 SALIC (KSA) · Cargill (70+ countries)</div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="badge bgrn">SAP Intelligent Agriculture</span><span class="badge bteal">MEWA/SFDA Built-in</span></div>
+    </div>
+  </div>
+
+  <div class="ind">
+    <div class="ind-hd"><div class="ind-ic" style="background:#FFF0E6;">🐄</div><div><div class="ind-t">Animal Feed Mills &amp; Commodity Processing</div><div class="ind-pe">CEO · Plant Manager · Ops Dir</div></div></div>
+    <div class="ind-bd">
+      <div class="ind-pain">💬 "Raw material costs shift weekly, batch quality varies, SFDA audit ties up the team for weeks."</div>
+      <div class="ind-proof">📊 30% fewer quality incidents via batch traceability</div>
+      <div class="ind-ref">🏆 Cargill Animal Nutrition (300+ facilities)</div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="badge bora">Recipe &amp; Formula Mgmt</span><span class="badge bteal">SFDA/MEWA QM</span></div>
+    </div>
+  </div>
+
+  <div class="ind">
+    <div class="ind-hd"><div class="ind-ic" style="background:#E8F1FB;">📦</div><div><div class="ind-t">Origination &amp; Commodity Trading</div><div class="ind-pe">CEO · CFO · Head of Trading</div></div></div>
+    <div class="ind-bd">
+      <div class="ind-pain">💬 "Billions in contract exposure on spreadsheets — supply chain visibility ends at the port."</div>
+      <div class="ind-proof">📊 Bunge: 40% faster contract processing cycles</div>
+      <div class="ind-ref">🏆 Louis Dreyfus (50+ countries) · SAGO/SALIC</div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="badge bblue">SAP ACM + TRM</span><span class="badge bgrn">SFDA Import Compliance</span></div>
+    </div>
+  </div>
+
+  <div class="ind">
+    <div class="ind-hd"><div class="ind-ic" style="background:#E8F5EE;">🥬</div><div><div class="ind-t">Fresh Produce</div><div class="ind-pe">CEO · COO · Supply Chain Dir</div></div></div>
+    <div class="ind-bd">
+      <div class="ind-pain">💬 "Post-harvest losses hit 15–25%. Cold chain breaks happen invisibly. Grower contracts on Excel."</div>
+      <div class="ind-proof">📊 Average 25% post-harvest loss reduction in 18 months</div>
+      <div class="ind-ref">🏆 Dole Food (90+ countries) · Del Monte Pacific</div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="badge bgrn">Perishables SCM</span><span class="badge bteal">Grower Mgmt by Vistex</span></div>
+    </div>
+  </div>
+
+  <div class="ind">
+    <div class="ind-hd"><div class="ind-ic" style="background:#FFF8E6;">🥛</div><div><div class="ind-t">Dairy</div><div class="ind-pe">CEO · Ops Director · CFO</div></div></div>
+    <div class="ind-bd">
+      <div class="ind-pain">💬 "Hundreds of milk suppliers, dozens of SKUs — SFDA audits tie up compliance team for weeks."</div>
+      <div class="ind-proof">📊 Arla Foods: 20% improvement in order fulfilment speed</div>
+      <div class="ind-ref">🏆 NADEC (KSA) · Fonterra · Arla Foods</div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="badge bamb">Dairy Mgmt by msg</span><span class="badge bteal">Halal/SFDA Automation</span></div>
+    </div>
+  </div>
+
+  <div class="ind">
+    <div class="ind-hd"><div class="ind-ic" style="background:#FEF0F0;">🥩</div><div><div class="ind-t">Meat, Poultry &amp; Fish</div><div class="ind-pe">CEO · Ops Dir · Export Dir</div></div></div>
+    <div class="ind-bd">
+      <div class="ind-pain">💬 "Halal certification is fully manual — audit risk and blocked export markets limit our growth."</div>
+      <div class="ind-proof">📊 Full batch traceability — live animal to consumer in seconds</div>
+      <div class="ind-ref">🏆 Tanmiah Food Company (KSA) · JBS (Global #1)</div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="badge bred">Meat &amp; Fish Mgmt by msg</span><span class="badge bgrn">Halal Compliance</span></div>
+    </div>
+  </div>
+
+  <div class="ind">
+    <div class="ind-hd"><div class="ind-ic" style="background:#E8EDF3;">🏭</div><div><div class="ind-t">Mill &amp; Manufacturing</div><div class="ind-pe">CEO · Plant Mgr · Ops Dir · CFO</div></div></div>
+    <div class="ind-bd">
+      <div style="font-size:10px;font-weight:700;margin-bottom:6px;color:var(--muted);">PARTNERS: MDSAP · Technoval (Amr. Tolba)</div>
+      <div class="ind-pain">💬 "Production planning is reactive, quality control is manual, and regulatory compliance drains weeks of team time."</div>
+      <div class="ind-proof">📊 SAP Mill Products: real-time production costing, batch traceability, SFDA/MEWA compliance</div>
+      <div class="ind-ref">🏆 SABIC · Saudi Aramco affiliates · SIDF beneficiaries · Privatised flour mills (Vision 2030)</div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="badge" style="background:#E8EDF3;color:#1A2638;">Mill Products</span><span class="badge" style="background:#E8EDF3;color:#1A2638;">PP/QM</span><span class="badge bteal">SFDA/MEWA Ready</span></div>
+    </div>
+  </div>
+
+  <div class="ind">
+    <div class="ind-hd"><div class="ind-ic" style="background:#FFF0E6;">🍱</div><div><div class="ind-t">Food Manufacturing</div><div class="ind-pe">CEO · Plant Mgr · Quality Dir · CFO</div></div></div>
+    <div class="ind-bd">
+      <div style="font-size:10px;font-weight:700;margin-bottom:6px;color:var(--muted);">PARTNER: Arete</div>
+      <div class="ind-pain">💬 "Recipe deviations, batch inconsistency, SFDA audits, and rising input costs — all hitting margins at the same time."</div>
+      <div class="ind-proof">📊 30% fewer quality incidents with batch traceability &amp; QM workflows</div>
+      <div class="ind-ref">🏆 Tanmiah Food · SaudiFood Manufacturing exhibitors · Modon industrial city tenants</div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="badge bora">Recipe &amp; Formula Mgmt</span><span class="badge bteal">SFDA/MEWA QM</span><span class="badge bgrn">Halal Compliance</span></div>
+    </div>
+  </div>
+
+  <div class="ind">
+    <div class="ind-hd"><div class="ind-ic" style="background:#E6F4F9;">🏪</div><div><div class="ind-t">Wholesale &amp; Distribution</div><div class="ind-pe">CEO · CFO · Distribution Dir</div></div></div>
+    <div class="ind-bd">
+      <div class="ind-pain">💬 "Multi-tier distribution, credit management across dozens of dealers, pricing inconsistency."</div>
+      <div class="ind-proof">📊 Role-play scripts &amp; calling materials available</div>
+      <div class="ind-ref">🏆 Local KSA distributors · NEOM supply ecosystem</div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="badge bteal">Trade Management</span><span class="badge bblue">Rebate Management</span></div>
+    </div>
+  </div>
+
+  <div class="ind">
+    <div class="ind-hd"><div class="ind-ic" style="background:#F3ECF9;">🛍</div><div><div class="ind-t">Retail</div><div class="ind-pe">CEO · COO · Merchandise Dir</div></div></div>
+    <div class="ind-bd">
+      <div style="font-size:10px;font-weight:700;margin-bottom:6px;color:var(--muted);">PARTNERS: Retail Business Line · DBS</div>
+      <div class="ind-pain">💬 "Omnichannel inventory gaps, fragmented loyalty, seasonal demand spikes we can't predict."</div>
+      <div class="ind-proof">📊 Unified commerce + demand-driven replenishment</div>
+      <div class="ind-ref">🏆 Cenomi / Al Sulaiman Group (KSA)</div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="badge bpur">Unified Commerce</span><span class="badge bblue">Merchandise Planning</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ▓▓▓▓▓▓ SECTION 3 — PITCHES ▓▓▓▓▓▓ -->
+<div id="pitches" class="sec-hd">
+  <div class="ico" style="background:#FFF0E6;color:#E87A22;">📣</div>
+  Industry Pitches &amp; Call Scripts Created
+</div>
+
+<div class="insight">
+  All pitches: <strong>pain-first, not product-first</strong>. Opens with a KSA-specific pain → localises with SFDA/MEWA/Vision 2030/Halal → anchors with a proof point → single CTA: 30-minute demo or discovery call. Files: <code>GROW_with_SAP_Saudi_Call_Drafts.md</code> · <code>GROW_with_SAP_Partner_Calling_Script_AgriCEO_KSA.md</code>
+</div>
+
+<div class="card" style="margin-bottom:18px;">
+  <div class="card-hd">Pitch Quick Reference — All 8 Industries</div>
+  <table>
+    <thead><tr><th>Industry</th><th>Target Persona</th><th>Opening Pain</th><th>KSA Local Anchor</th><th>Proof Point</th><th>CTA</th></tr></thead>
+    <tbody>
+      <tr><td><strong>🥬 Fresh Produce</strong></td><td>CEO / COO / SCM Dir</td><td style="color:#C0392B;">Cold chain breaks · 15–25% post-harvest losses</td><td>SFDA tightening traceability</td><td style="color:#1BAC67;font-weight:600;">25% loss reduction in 18 months</td><td><span class="badge bblue">30-min cold chain demo</span></td></tr>
+      <tr><td><strong>🥛 Dairy</strong></td><td>CEO / Ops Dir / CFO</td><td style="color:#C0392B;">SFDA audit burden · co-product costing chaos</td><td>NADEC on SAP · Halal automation</td><td style="color:#1BAC67;font-weight:600;">Arla: 20% order fulfilment improvement</td><td><span class="badge bblue">30-min benchmarking session</span></td></tr>
+      <tr><td><strong>📦 Commodity Trading</strong></td><td>CEO / CFO / Risk Officer</td><td style="color:#C0392B;">Spreadsheet risk exposure · no visibility past port</td><td>SFDA import compliance · SAGO/SALIC</td><td style="color:#1BAC67;font-weight:600;">Bunge: 40% faster contract cycles</td><td><span class="badge bblue">30-min trading &amp; risk demo</span></td></tr>
+      <tr><td><strong>🌾 Agri Production</strong></td><td>CEO / Head Ops / CFO</td><td style="color:#C0392B;">Siloed farm-finance · MEWA/SFDA audit weeks</td><td>SALIC on SAP · Vision 2030</td><td style="color:#1BAC67;font-weight:600;">20% input waste reduction post go-live</td><td><span class="badge bblue">30-min Vision 2030 roadmap call</span></td></tr>
+      <tr><td><strong>🥩 Meat/Poultry/Fish</strong></td><td>CEO / Ops Dir / Export Dir</td><td style="color:#C0392B;">Manual halal traceability blocking export markets</td><td>Tanmiah on SAP · SFDA/Halal ready</td><td style="color:#1BAC67;font-weight:600;">JBS global traceability at scale</td><td><span class="badge bblue">30-min halal &amp; export cert demo</span></td></tr>
+      <tr><td><strong>🐄 Feed Mills</strong></td><td>CEO / Plant Mgr / CFO</td><td style="color:#C0392B;">Batch quality variance · SFDA audit crisis · no cost visibility</td><td>SFDA/MEWA local compliance</td><td style="color:#1BAC67;font-weight:600;">30% reduction in quality incidents</td><td><span class="badge bblue">30-min batch traceability demo</span></td></tr>
+      <tr><td><strong>🏪 Wholesale</strong></td><td>CEO / CFO</td><td style="color:#C0392B;">Multi-tier complexity · credit management chaos</td><td>Local KSA distributors · NEOM</td><td style="color:#1BAC67;font-weight:600;">Trade management efficiency gains</td><td><span class="badge bblue">30-min wholesale discovery</span></td></tr>
+      <tr><td><strong>🛍 Retail</strong></td><td>CEO / COO</td><td style="color:#C0392B;">Omnichannel gaps · demand spike failures</td><td>Cenomi / Al Sulaiman Group</td><td style="color:#1BAC67;font-weight:600;">Unified commerce benchmark</td><td><span class="badge bblue">30-min retail demo</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Best practices -->
+<div class="g3">
+  <div style="background:#E8F1FB;border-radius:11px;padding:16px;"><div style="font-size:20px;margin-bottom:8px;">🎯</div><div style="font-size:12px;font-weight:700;margin-bottom:4px;">Pain First, Product Second</div><div style="font-size:11px;color:var(--muted);">Every script leads with the prospect's specific pain — never open with SAP features or capabilities.</div></div>
+  <div style="background:#E8F5EE;border-radius:11px;padding:16px;"><div style="font-size:20px;margin-bottom:8px;">🇸🇦</div><div style="font-size:12px;font-weight:700;margin-bottom:4px;">Localise Immediately</div><div style="font-size:11px;color:var(--muted);">SFDA, MEWA, Vision 2030, and KSA references (NADEC, SALIC, Tanmiah) in the first 30 seconds.</div></div>
+  <div style="background:#FFF8E6;border-radius:11px;padding:16px;"><div style="font-size:20px;margin-bottom:8px;">📊</div><div style="font-size:12px;font-weight:700;margin-bottom:4px;">Anchor with Numbers</div><div style="font-size:11px;color:var(--muted);">Use benchmarks: 25%, 30%, 40% — never make a promise without a proof point benchmark.</div></div>
+  <div style="background:#FFF0E6;border-radius:11px;padding:16px;"><div style="font-size:20px;margin-bottom:8px;">📞</div><div style="font-size:12px;font-weight:700;margin-bottom:4px;">One Clear CTA</div><div style="font-size:11px;color:var(--muted);">End with a single ask: a 30-minute demo or discovery call. No vague "let's stay in touch."</div></div>
+  <div style="background:#F3ECF9;border-radius:11px;padding:16px;"><div style="font-size:20px;margin-bottom:8px;">⏱</div><div style="font-size:12px;font-weight:700;margin-bottom:4px;">Under 90 Seconds</div><div style="font-size:11px;color:var(--muted);">Opening calls only — you're earning the meeting, not closing the deal. Keep it sharp and tight.</div></div>
+  <div style="background:#E6F4F9;border-radius:11px;padding:16px;"><div style="font-size:20px;margin-bottom:8px;">🏆</div><div style="font-size:12px;font-weight:700;margin-bottom:4px;">Local References First</div><div style="font-size:11px;color:var(--muted);">NADEC, SALIC, Tanmiah carry far more weight in KSA than Dole, Tyson, or global-only names.</div></div>
+</div>
+
+
+<!-- ▓▓▓▓▓▓ SECTION 4 — PARTNER ENABLEMENT ▓▓▓▓▓▓ -->
+<div id="enablement" class="sec-hd">
+  <div class="ico" style="background:#E8F5EE;color:#1BAC67;">🤝</div>
+  Partner Enablement &amp; Training
+</div>
+
+<div class="g-6-4">
+  <!-- Training tracks -->
+  <div class="card">
+    <div class="card-hd">Enablement Training Tracks</div>
+    <div class="card-bd">
+      <div class="g2" style="gap:12px;">
+        <div class="track"><div class="track-n">01</div><div class="track-t">Industry Knowledge</div><div class="track-d">All 8 verticals: pains, GROW modules, KSA references, SFDA/MEWA/Halal compliance requirements.</div></div>
+        <div class="track"><div class="track-n">02</div><div class="track-t">GROW Positioning</div><div class="track-d">Cloud-native value prop, 6–9 month go-live, best practices built-in, Vision 2030 narrative.</div></div>
+        <div class="track"><div class="track-n">03</div><div class="track-t">CEO Calling Skills</div><div class="track-d">Pain-first scripting, objection handling, discovery questions, pain amplification, gatekeeper bypass.</div></div>
+        <div class="track"><div class="track-n">04</div><div class="track-t">Tools Usage</div><div class="track-d">Outreach sequences, Dripify LinkedIn automation, ZoomInfo profiling, ONE360 account lookup.</div></div>
+        <div class="track"><div class="track-n">05</div><div class="track-t">CRM Hygiene</div><div class="track-d">Logging calls in ONE360, creating leads correctly, updating opp stages, tracking pipeline accurately.</div></div>
+        <div class="track"><div class="track-n">06</div><div class="track-t">Objection Handling</div><div class="track-d">"We have a system." / "Not the right time." / "Family business." — scripted responses for each.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resources -->
+  <div class="card">
+    <div class="card-hd">Resources Shared with Partners</div>
+    <div class="card-bd" style="padding-top:10px;">
+      <div class="res"><div class="res-dot" style="background:#0070F2;"></div><div><div class="res-nm">Industry One-Pagers (PDFs)</div><div class="res-ds">6 agri sub-industry GROW pitch decks — KSA-localised, CEO-ready</div></div></div>
+      <div class="res"><div class="res-dot" style="background:#00B8D9;"></div><div><div class="res-nm">CEO Calling Scripts</div><div class="res-ds">8 industry scripts — pain-first, SFDA/MEWA/Vision 2030 anchored</div></div></div>
+      <div class="res"><div class="res-dot" style="background:#E87A22;"></div><div><div class="res-nm">Role-Play Materials</div><div class="res-ds">Wholesale Distribution role-play deck &amp; script · discovery call transcript</div></div></div>
+      <div class="res"><div class="res-dot" style="background:#1BAC67;"></div><div><div class="res-nm">Enriched Account Lists</div><div class="res-ds">Per-partner lists with website, DUNS, contact enrichment from ZoomInfo</div></div></div>
+      <div class="res"><div class="res-dot" style="background:#7B4FBF;"></div><div><div class="res-nm">Email Sequences</div><div class="res-ds">Agribusiness, Automotive, ECC-to-S4 nurture, SAP NOW Riyadh 2026</div></div></div>
+      <div class="res"><div class="res-dot" style="background:#F5A623;"></div><div><div class="res-nm">Enablement Decks</div><div class="res-ds">SDE Partner Enablement KSA 2025 &amp; 2026 (PPTX)</div></div></div>
+      <div class="res"><div class="res-dot" style="background:#007BA5;"></div><div><div class="res-nm">Exhibitor / Event Lists</div><div class="res-ds">Saudi Agriculture Show · AGRISHOW · Gulf Food exhibitor extracts</div></div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ▓▓▓▓▓▓ SECTION 5 — TOOLS & CAMPAIGNS ▓▓▓▓▓▓ -->
+<div id="tools" class="sec-hd">
+  <div class="ico" style="background:#E8F1FB;color:#0070F2;">🛠</div>
+  Tools &amp; Campaign Execution
+</div>
+
+<div class="g5" style="margin-bottom:20px;">
+  <div class="tool"><div class="tool-ico">📧</div><div class="tool-nm">Outreach</div><div class="tool-ds">Email sequences &amp; call cadences. Sequences: Agribusiness GROW, Automotive, ECC-to-S4 nurture, SAP NOW Riyadh 2026, Wholesale CIO/CFO.</div><div style="margin-top:8px;"><span class="badge bblue">Email Automation</span></div></div>
+  <div class="tool"><div class="tool-ico">🔗</div><div class="tool-nm">Dripify</div><div class="tool-ds">LinkedIn automation for partner prospecting. Connection requests, follow-up drips, targeting C-level personas across all 3 industry verticals.</div><div style="margin-top:8px;"><span class="badge bteal">LinkedIn Automation</span></div></div>
+  <div class="tool"><div class="tool-ico">🔎</div><div class="tool-nm">ZoomInfo</div><div class="tool-ds">Account profiling &amp; contact enrichment. Identifies CEO/CFO/COO contacts for white space and non-CRM accounts. Output: enriched CSVs.</div><div style="margin-top:8px;"><span class="badge bpur">Contact Intelligence</span></div></div>
+  <div class="tool"><div class="tool-ico">📋</div><div class="tool-nm">SAP ONE360</div><div class="tool-ds">Internal CRM. Checks account existence, AE/TEM ownership, lead &amp; opportunity status. Lookup automation scripts built and available.</div><div style="margin-top:8px;"><span class="badge bamb">CRM / Account Lookup</span></div></div>
+  <div class="tool"><div class="tool-ico">📡</div><div class="tool-nm">CampaignIQ</div><div class="tool-ds">SAP campaign management. HTML &amp; video assets created. Structured campaign tracking and partner co-marketing activities.</div><div style="margin-top:8px;"><span class="badge bgrn">Campaign Management</span></div></div>
+</div>
+
+<!-- 9-step workflow -->
+<div class="card">
+  <div class="card-hd">Partner-Driven Campaign Execution — 9-Step Workflow</div>
+  <div class="card-bd">
+    <div class="g2">
+      <div>
+        <div class="step"><div class="step-n">1</div><div><h4>Account Identification</h4><p>Pull from ONE360 + ZoomInfo profiling of white space accounts. Output: enriched CSVs segmented by industry.</p></div></div>
+        <div class="step"><div class="step-n">2</div><div><h4>Account Segmentation</h4><p>Split by industry (Agri / Wholesale / Retail) and sub-industry. Assign account batches to relevant partner.</p></div></div>
+        <div class="step"><div class="step-n">3</div><div><h4>Contact Enrichment</h4><p>Use ZoomInfo to find CEO/CFO/COO direct contacts. Validate and connect via LinkedIn (Dripify).</p></div></div>
+        <div class="step"><div class="step-n">4</div><div><h4>Sequence Launch</h4><p>Load contacts into Outreach (email cadence) and Dripify (LinkedIn drip). Use industry-specific sequences per persona.</p></div></div>
+        <div class="step"><div class="step-n">5</div><div><h4>Partner Briefing / Enablement</h4><p>1-hr session: pitch training, objection handling, calling tips. Share one-pager PDFs &amp; scripts per industry.</p></div></div>
+      </div>
+      <div>
+        <div class="step"><div class="step-n">6</div><div><h4>Calling Sprint / Blitz Day</h4><p>In-person sprint at SAP KSA Office or remote. SDE provides live floor coaching. All calls logged in CRM in real time.</p></div></div>
+        <div class="step"><div class="step-n">7</div><div><h4>Lead Creation</h4><p>Partner logs qualified leads in ONE360 or via SDE support. Qualification: pain identified + DM engaged + next step agreed.</p></div></div>
+        <div class="step"><div class="step-n">8</div><div><h4>Opportunity Progression &amp; AE Handover</h4><p>SDE supports warm handover to AE/TEM. Opportunity created in CRM with full context from discovery call.</p></div></div>
+        <div class="step"><div class="step-n">9</div><div><h4>Bi-Weekly Reporting</h4><p>SDE Demand Generation Report compiled bi-weekly — leads, opps, conversion rate, partner performance, pipeline value.</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ▓▓▓▓▓▓ SECTION 6 — WHITE SPACE ▓▓▓▓▓▓ -->
+<div id="whitespace" class="sec-hd">
+  <div class="ico" style="background:#FFF8E6;color:#C87800;">🔍</div>
+  White Space Account Strategy
+</div>
+
+<div class="insight">
+  White space = accounts <strong>not yet in SAP CRM (ONE360)</strong>. Identified via government registries, trade events, and industry databases. Key files: <code>KSA NOT in CRM Eastern Region.xlsx</code> · <code>KSA NOT in CRM Western Region.xlsx</code> · <code>agrishow_one360_lookup.csv</code> · <code>Retail_Accounts_By_Subindustry.csv</code>
+</div>
+
+<div class="g5" style="margin-bottom:20px;">
+  <div class="ws"><div class="ws-ic">🏛</div><div class="ws-t">Government Websites</div><ul><li>MEWA — registered agri entities</li><li>SFDA — licensed food companies</li><li>Ministry of Commerce registry</li><li>ZATCA registered businesses</li><li>SIDF beneficiaries</li></ul></div>
+  <div class="ws"><div class="ws-ic">🎪</div><div class="ws-t">Exhibitions &amp; Events</div><ul><li>Saudi Agriculture Exhibition</li><li>AGRISHOW (extract done ✓)</li><li>Gulf Food Exhibition</li><li>Saudi Food Show</li><li>Big 5 Saudi · Seamless Retail</li></ul></div>
+  <div class="ws"><div class="ws-ic">🏦</div><div class="ws-t">PIF / Vision 2030 Portfolio</div><ul><li>PIF company portfolio list</li><li>NEOM supply chain partners</li><li>Vision 2030 food security entities</li><li>GIGA projects supply ecosystem</li></ul></div>
+  <div class="ws"><div class="ws-ic">🤝</div><div class="ws-t">Trade Associations</div><ul><li>Saudi Chamber of Commerce</li><li>SFDA approved importers</li><li>Saudi Food &amp; Bev association</li><li>HADAF registered companies</li></ul></div>
+  <div class="ws"><div class="ws-ic">📰</div><div class="ws-t">News &amp; Press Monitoring</div><ul><li>Argaam — KSA business news</li><li>Mubasher — company updates</li><li>Zawya — MENA business intel</li><li>New registrations &amp; funding</li></ul></div>
+</div>
+
+<div class="card">
+  <div class="card-hd">White Space Lookup Files — Current Status</div>
+  <table>
+    <thead><tr><th>File</th><th>Industry</th><th>Status</th><th>Action Required</th></tr></thead>
+    <tbody>
+      <tr><td>agrishow_one360_lookup.csv</td><td>Agribusiness</td><td><span class="badge bgrn">Looked Up ✓</span></td><td>Cross-ref with ONE360 complete — exhibitors mapped</td></tr>
+      <tr><td>saudi_agriculture_unmatched_exhibitors.csv</td><td>Agribusiness</td><td><span class="badge bamb">Unmatched</span></td><td>Profile via ZoomInfo → load into Outreach</td></tr>
+      <tr><td>ksa-agri-companies-one360-lookup-v3.csv</td><td>Agribusiness</td><td><span class="badge bgrn">Enriched v3 ✓</span></td><td>Latest version — new matches added</td></tr>
+      <tr><td>ksa-agri-still-unmatched.csv</td><td>Agribusiness</td><td><span class="badge bred">Unmatched ⚠</span></td><td>ZoomInfo profiling required urgently</td></tr>
+      <tr><td>KSA NOT in CRM — Eastern Region.xlsx</td><td>All Industries</td><td><span class="badge bamb">Not in CRM</span></td><td>Segment by industry → assign to partner</td></tr>
+      <tr><td>KSA NOT in CRM — Western Region.xlsx</td><td>All Industries</td><td><span class="badge bamb">Not in CRM</span></td><td>Segment by industry → assign to partner</td></tr>
+      <tr><td>Retail_Accounts_By_Subindustry.csv</td><td>Retail</td><td><span class="badge bgrn">Segmented ✓</span></td><td>By sub-industry — ready for Outreach sequences</td></tr>
+      <tr><td>OUT_OF_CRM_with_websites_DUNS.csv</td><td>Multiple</td><td><span class="badge bgrn">Enriched ✓</span></td><td>DUNS + website data — highest priority for outreach</td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- ▓▓▓▓▓▓ SECTION 7 — BLITZ DAY PLAN ▓▓▓▓▓▓ -->
+<div id="blitz" class="sec-hd">
+  <div class="ico" style="background:#FEF0F0;color:#E3342F;">⚡</div>
+  Blitz Day Plan
+</div>
+
+<div class="insight">
+  A <strong>Blitz Day</strong> is a focused calling sprint at the <strong>SAP KSA Office, Riyadh</strong>. SDE responsibilities: prepare account lists · run pre-blitz bootcamp · live-coach calls · handle AE escalations · log all leads in ONE360 · compile results report. <strong>Target: minimum 5 qualified meetings per partner per day.</strong>
+</div>
+
+<div class="g2" style="margin-bottom:20px;">
+  <div class="ag-day">
+    <div class="ag-dh">Day 1 — Bootcamp + Calling Sprints</div>
+    <div class="ag-row"><div class="ag-t">09:00 – 11:00</div><div class="ag-a">Pre-Blitz Bootcamp<small>Industry briefing · objection handling drill · account list review · assign calling batches per person</small></div></div>
+    <div class="ag-row"><div class="ag-t">11:30 – 13:00</div><div class="ag-a">Sprint 1 — Calling Execution<small>Live floor coaching by SDE · real-time CRM logging · qualify and book meetings</small></div></div>
+    <div class="ag-row"><div class="ag-t">13:00 – 14:00</div><div class="ag-a">Lunch Break + Mid-Day Debrief<small>Review Sprint 1 results · refine messaging · energise the team for afternoon</small></div></div>
+    <div class="ag-row"><div class="ag-t">14:00 – 15:00</div><div class="ag-a">Sprint 2 — Second Calling Wave<small>Update CRM · handle AE/TEM escalations · confirm meeting bookings</small></div></div>
+  </div>
+  <div class="ag-day">
+    <div class="ag-dh">Day 2 — Full Sprint + Results</div>
+    <div class="ag-row"><div class="ag-t">09:00 – 13:00</div><div class="ag-a">Morning Sprint — Full 4-Hour Block<small>SDE floor support throughout · focus on conversion to meetings</small></div></div>
+    <div class="ag-row"><div class="ag-t">13:00 – 14:00</div><div class="ag-a">Lunch Break<small>Team regroup · running lead count update · final push prep</small></div></div>
+    <div class="ag-row"><div class="ag-t">14:00 – 15:00</div><div class="ag-a">Final Sprint<small>Close outstanding follow-ups · confirm all meetings in calendar</small></div></div>
+    <div class="ag-row"><div class="ag-t">15:30 – 17:00</div><div class="ag-a">Results Debrief + Winner Announcement<small>All leads logged · pipeline summary presented · top performer recognised</small></div></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-hd">Partner Blitz Tracker <span class="badge bora">Next: Nov 4–5 2026 · SAP KSA Office · Riyadh</span></div>
+  <table>
+    <thead><tr><th>Partner</th><th>Status</th><th>Accounts</th><th>Industry Focus</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Altivate</strong></td><td><span class="badge bblue">Planned — Nov 2026</span></td><td>~55</td><td>Agribusiness · Wholesale</td><td>List ready: blitz/2026/altivate/</td></tr>
+      <tr><td><strong>Edraky</strong></td><td><span class="badge bblue">Planned — 2026</span></td><td>TBD</td><td>Agribusiness</td><td>List in preparation: blitz/2026/edraky/</td></tr>
+      <tr><td><strong>Ecotech</strong></td><td><span class="badge bgrn">Executed ✓</span></td><td>52</td><td>Mixed industries</td><td>Ecotech-52 accounts-blitz.xlsx</td></tr>
+      <tr><td><strong>Technoval</strong></td><td><span class="badge bgrn">Executed ✓</span></td><td>Active</td><td>Mixed industries</td><td>Technoval Blitz.xlsx · Technoval&amp;SAP Blitz Day.xlsx</td></tr>
+      <tr><td><strong>Expert</strong></td><td><span class="badge bgrn">Executed ✓</span></td><td>Active</td><td>Mixed industries</td><td>Expert Blitz.xlsx</td></tr>
+      <tr><td><strong>T&amp;S</strong></td><td><span class="badge bgrn">Executed ✓</span></td><td>Active</td><td>Mixed industries</td><td>T&amp;S Blitz.xlsx</td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+<!-- ▓▓▓▓▓▓ SECTION 8 — PARTNER PROCESS ▓▓▓▓▓▓ -->
+<div id="process" class="sec-hd" style="margin-top:56px;">
+  <div class="ico" style="background:#E8F1FB;color:#0070F2;">🔄</div>
+  Partner-Driven DG Process — From List to Solid Booked Account
+</div>
+
+<div class="insight">
+  An end-to-end repeatable process: <strong>SDE sends industry-matched lists → Partner profiles &amp; pitches → C-Level calls → Lead captured → Qualified through 8 criteria → Booked opportunity.</strong> Each step has a clear owner, tool, and output.
+</div>
+
+<!-- ── STEP PIPELINE FLOW ── -->
+<div class="pp-flow">
+  <div class="pp-step pp-s1">
+    <div class="pp-num">Step 01</div>
+    <div class="pp-icon">📋</div>
+    <div class="pp-title">SDE Sends Account List</div>
+    <div class="pp-sub">Matched to partner's industry expertise</div>
+  </div>
+  <div class="pp-step pp-s1" style="background:#0060d6;">
+    <div class="pp-num">Step 02</div>
+    <div class="pp-icon">🔍</div>
+    <div class="pp-title">Partner Profiles Accounts</div>
+    <div class="pp-sub">Research, enrichment &amp; contact finding</div>
+  </div>
+  <div class="pp-step pp-s2">
+    <div class="pp-num">Step 03</div>
+    <div class="pp-icon">🎯</div>
+    <div class="pp-title">Pitch Preparation &amp; Account Intelligence</div>
+    <div class="pp-sub">CEO-level pitch + AI-powered insights</div>
+  </div>
+  <div class="pp-step pp-s3">
+    <div class="pp-num">Step 04</div>
+    <div class="pp-icon">📞</div>
+    <div class="pp-title">C-Level Outreach &amp; Discovery</div>
+    <div class="pp-sub">Cold/warm calls, LinkedIn, email sequences</div>
+  </div>
+  <div class="pp-step pp-s4">
+    <div class="pp-num">Step 05</div>
+    <div class="pp-icon">🌱</div>
+    <div class="pp-title">Lead Captured &amp; Nurtured</div>
+    <div class="pp-sub">Logged in CRM → qualify → nurture to opp</div>
+  </div>
+  <div class="pp-step pp-s5">
+    <div class="pp-num">Step 06</div>
+    <div class="pp-icon">✅</div>
+    <div class="pp-title">8-Point Qualification</div>
+    <div class="pp-sub">Checklist gates the lead to opportunity</div>
+  </div>
+  <div class="pp-step pp-s6">
+    <div class="pp-num">Step 07</div>
+    <div class="pp-icon">🏆</div>
+    <div class="pp-title">Solid Booked Account</div>
+    <div class="pp-sub">Qualified opp · AE owns · next step in diary</div>
+  </div>
+</div>
+
+<!-- ── STEP DETAIL CARDS ── -->
+<div class="pp-cards">
+
+  <div class="pp-card">
+    <div class="pp-card-hd"><div class="pp-card-dot" style="background:#0070F2;"></div><div class="pp-card-t">01 — SDE Sends List</div></div>
+    <div class="pp-card-bd">
+      <ul>
+        <li>Pull accounts from ONE360 filtered by industry vertical</li>
+        <li>Cross-reference white space (KSA NOT in CRM files)</li>
+        <li>Match partner to industry expertise:<br>
+          <em>Agri → Seidor/Wisys/LABS/Arete/Technoval</em><br>
+          <em>Manufacturing → MDSAP/Technoval</em><br>
+          <em>Retail → Retail BL / DBS</em>
+        </li>
+        <li>Deliver: enriched Excel / CSV with website, DUNS, sub-industry tag</li>
+      </ul>
+      <span class="pp-tool">ONE360</span><span class="pp-tool">ZoomInfo</span><span class="pp-tool">Excel</span>
+    </div>
+  </div>
+
+  <div class="pp-card">
+    <div class="pp-card-hd"><div class="pp-card-dot" style="background:#0060d6;"></div><div class="pp-card-t">02 — Partner Profiles</div></div>
+    <div class="pp-card-bd">
+      <ul>
+        <li>Research company: revenue, headcount, current systems, recent news</li>
+        <li>Identify decision maker: CEO, CFO, COO, Ops Director</li>
+        <li>Find direct contact: LinkedIn, website, ZoomInfo</li>
+        <li>Flag: ECC / legacy ERP → RISE/GROW opportunity</li>
+        <li>Flag: no ERP → greenfield GROW opportunity</li>
+        <li>Output: profiling sheet with all fields populated</li>
+      </ul>
+      <span class="pp-tool">ZoomInfo</span><span class="pp-tool">LinkedIn</span><span class="pp-tool">Dripify</span>
+    </div>
+  </div>
+
+  <div class="pp-card">
+    <div class="pp-card-hd"><div class="pp-card-dot" style="background:#007BA5;"></div><div class="pp-card-t">03 — Pitch &amp; Intelligence</div></div>
+    <div class="pp-card-bd">
+      <ul>
+        <li>Select industry pitch (e.g. Agri Farming / Feed Mill / Retail)</li>
+        <li>Use account intelligence: recent news, Pain from annual report, trigger events (expansion, new plant, leadership change)</li>
+        <li>Personalise opening pain to company context</li>
+        <li>Prepare 1-page leave-behind (industry PDF one-pager)</li>
+        <li>Set up Outreach sequence for email track</li>
+        <li>Connect on LinkedIn via Dripify before calling</li>
+      </ul>
+      <span class="pp-tool">Outreach</span><span class="pp-tool">Dripify</span><span class="pp-tool">Industry PDFs</span>
+    </div>
+  </div>
+
+  <div class="pp-card">
+    <div class="pp-card-hd"><div class="pp-card-dot" style="background:#C87800;"></div><div class="pp-card-t">04 — C-Level Outreach</div></div>
+    <div class="pp-card-bd">
+      <ul>
+        <li>Call CEO/CFO/COO directly — 60–90 sec opening script</li>
+        <li>Lead with #1 industry pain, not product</li>
+        <li>Reference local KSA proof (SALIC, NADEC, Tanmiah)</li>
+        <li>Single CTA: 30-min discovery call</li>
+        <li>If no answer: email sequence + LinkedIn follow-up within 24hrs</li>
+        <li>If interested: book meeting on the spot, CC Mahmoud Makari</li>
+        <li>Log call outcome in ONE360 immediately</li>
+      </ul>
+      <span class="pp-tool">Calling Script</span><span class="pp-tool">Outreach</span><span class="pp-tool">ONE360 CRM</span>
+    </div>
+  </div>
+
+  <div class="pp-card">
+    <div class="pp-card-hd"><div class="pp-card-dot" style="background:#E87A22;"></div><div class="pp-card-t">05 — Lead &amp; Nurture</div></div>
+    <div class="pp-card-bd">
+      <ul>
+        <li>Create lead in ONE360 immediately after engagement</li>
+        <li>Capture: pain expressed, DM name, company, next step</li>
+        <li>If not ready: enter nurture sequence (monthly touchpoint)</li>
+        <li>SDE supports: send follow-up content, industry stats, event invites</li>
+        <li>Re-engage warm leads before each blitz day</li>
+        <li>Target: convert lead to opportunity within 30 days</li>
+      </ul>
+      <span class="pp-tool">ONE360</span><span class="pp-tool">Outreach Nurture</span><span class="pp-tool">Events</span>
+    </div>
+  </div>
+
+  <div class="pp-card">
+    <div class="pp-card-hd"><div class="pp-card-dot" style="background:#1BAC67;"></div><div class="pp-card-t">06–07 — Qualify &amp; Book</div></div>
+    <div class="pp-card-bd">
+      <ul>
+        <li>Run 8-point qualification checklist (see below)</li>
+        <li>All 8 criteria must be addressed before opp creation</li>
+        <li>SDE validates with partner before AE handover</li>
+        <li>AE/TEM warm introduction call set</li>
+        <li>Next meeting confirmed in diary = <strong>Solid Booked Account</strong></li>
+        <li>Opportunity created in ONE360 with full context</li>
+      </ul>
+      <span class="pp-tool">8-Point Checklist</span><span class="pp-tool">ONE360 Opp</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── QUALIFICATION CHECKLIST ── -->
+<div class="qbox">
+  <div class="qbox-hd">
+    <h3>☑ 8-Point Qualification Checklist — Gate to Opportunity</h3>
+    <span>All 8 criteria must be addressed</span>
+  </div>
+  <div class="qgrid">
+
+    <div class="qitem">
+      <div class="qchk mand">1</div>
+      <div>
+        <div class="qi-num">Criterion 01 — Pain Confirmed</div>
+        <div class="qi-t">Business Pain Identified &amp; Articulated</div>
+        <div class="qi-d">The prospect has expressed a clear, specific business problem that GROW with SAP can solve. Not a generic interest — a named pain (e.g. "SFDA audit preparation takes 3 weeks", "cold chain breaks cost us 20% losses").</div>
+        <span class="qi-tag" style="background:#E8F1FB;color:#0070F2;">Mandatory</span>
+      </div>
+    </div>
+
+    <div class="qitem">
+      <div class="qchk mand">2</div>
+      <div>
+        <div class="qi-num">Criterion 02 — Decision Maker</div>
+        <div class="qi-t">C-Level / Economic Buyer Engaged</div>
+        <div class="qi-d">We have spoken directly with the CEO, CFO, COO, or the person who controls the budget decision. Contact with an IT manager or coordinator only does not qualify — we need the economic buyer in the conversation.</div>
+        <span class="qi-tag" style="background:#E8F1FB;color:#0070F2;">Mandatory</span>
+      </div>
+    </div>
+
+    <div class="qitem">
+      <div class="qchk">3</div>
+      <div>
+        <div class="qi-num">Criterion 03 — Budget Awareness</div>
+        <div class="qi-t">Budget Exists or Can Be Allocated</div>
+        <div class="qi-d">The prospect has indicated budget availability, an active digital transformation project, or a willingness to explore investment. No budget signal at all = nurture, not qualify. Look for: transformation initiatives, Vision 2030 funding, CAPEX cycle, board-approved projects.</div>
+        <span class="qi-tag" style="background:#FFF8E6;color:#C87800;">Important</span>
+      </div>
+    </div>
+
+    <div class="qitem">
+      <div class="qchk">4</div>
+      <div>
+        <div class="qi-num">Criterion 04 — Timeline</div>
+        <div class="qi-t">Decision / Go-Live Timeline Identified</div>
+        <div class="qi-d">The prospect has given an indication of when they would want to go live or make a decision — even a rough range ("we're looking at H1 next year", "board decision in Q4"). No timeline = track as interest, not opportunity.</div>
+        <span class="qi-tag" style="background:#FFF8E6;color:#C87800;">Important</span>
+      </div>
+    </div>
+
+    <div class="qitem">
+      <div class="qchk">5</div>
+      <div>
+        <div class="qi-num">Criterion 05 — Current State</div>
+        <div class="qi-t">Current System / Gap Understood</div>
+        <div class="qi-d">We know what system (or lack thereof) the prospect is running today: spreadsheets, legacy ERP (ECC, Oracle, Dynamics), or no system. This confirms the displacement or greenfield opportunity and shapes the pitch for the discovery meeting.</div>
+        <span class="qi-tag" style="background:#E6F4F9;color:#007BA5;">Required</span>
+      </div>
+    </div>
+
+    <div class="qitem">
+      <div class="qchk">6</div>
+      <div>
+        <div class="qi-num">Criterion 06 — Next Step Agreed</div>
+        <div class="qi-t">Concrete Next Action Confirmed in Diary</div>
+        <div class="qi-d">A specific next step has been agreed and placed in the calendar: discovery call, demo, workshop, or meeting with the SAP team. A vague "let's stay in touch" or "send me something" does not qualify. The meeting invite must be sent and accepted.</div>
+        <span class="qi-tag" style="background:#E8F1FB;color:#0070F2;">Mandatory</span>
+      </div>
+    </div>
+
+    <div class="qitem">
+      <div class="qchk">7</div>
+      <div>
+        <div class="qi-num">Criterion 07 — Company Fit</div>
+        <div class="qi-t">Company Size &amp; Industry Fit GROW with SAP</div>
+        <div class="qi-d">The prospect fits the GROW with SAP profile: midsize company (typically SAR 50M–2B revenue), not a global enterprise requiring RISE. Industry must be in scope: Agribusiness, Mill &amp; Manufacturing, Food Manufacturing, or Retail. Confirm headcount and revenue range.</div>
+        <span class="qi-tag" style="background:#E8F5EE;color:#1BAC67;">Fit Check</span>
+      </div>
+    </div>
+
+    <div class="qitem">
+      <div class="qchk">8</div>
+      <div>
+        <div class="qi-num">Criterion 08 — No Blocking Factors</div>
+        <div class="qi-t">No Known Blockers to Progressing</div>
+        <div class="qi-d">There are no known blockers: no active competing vendor selected, no recent failed SAP project, no internal freeze on IT spend, no pending M&amp;A that would delay decisions. If a blocker exists, document it and set a follow-up date — do not log as an opportunity.</div>
+        <span class="qi-tag" style="background:#FEF0F0;color:#C0392B;">Risk Check</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── SOLID BOOKED ACCOUNT ── -->
+<div class="solid-acct">
+  <div class="solid-icon">🏆</div>
+  <div>
+    <div class="solid-t">✅ Solid Booked Account — Definition</div>
+    <div class="solid-d">A <strong>Solid Booked Account</strong> means all 8 qualification criteria are addressed, the economic buyer is engaged, a confirmed meeting is in the AE/TEM diary, and the opportunity is created in ONE360 with full context. This is the moment the account moves from SDE/Partner ownership to AE ownership.</div>
+    <div class="solid-checks">
+      <span class="solid-chk">✓ Pain Confirmed</span>
+      <span class="solid-chk">✓ DM Engaged</span>
+      <span class="solid-chk">✓ Budget Signal</span>
+      <span class="solid-chk">✓ Timeline Noted</span>
+      <span class="solid-chk">✓ Current State Known</span>
+      <span class="solid-chk">✓ Next Step in Diary</span>
+      <span class="solid-chk">✓ Company Fits GROW</span>
+      <span class="solid-chk">✓ No Blockers</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<!-- ██ FOOTER ██ -->
+<div class="ftr">
+  <b>Mahmoud Makari</b> · Territory Ecosystem Manager · mahmoud.makari@sap.com &nbsp;·&nbsp;
+  <b>Mariam Ezz</b> · SDE · mariam.ezz@sap.com &nbsp;·&nbsp;
+  SAP Saudi Arabia · Partner-Driven Territory · KSA 2026
+</div>
+
+</body>
+</html>
